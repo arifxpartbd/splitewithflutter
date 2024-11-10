@@ -39,4 +39,25 @@ class TodoDatabase{
     final db = await instance.database;
     db.close();
   }
+
+  Future<int> insertTodo(Map<String, dynamic> todo)async{
+    final db = await  instance.database;
+    return await db.insert("todos", todo);
+  }
+
+  Future<List<Map<String, dynamic>>> fetchTodos() async{
+    final db = await instance.database;
+    return await db.query("todos");
+  }
+
+  Future<int> updateTodo(int id, Map<String, dynamic> todo)async{
+    final db = await instance.database;
+    return await db.update('todos', todo, where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<int> deleteTodo(int id) async {
+    final db = await instance.database;
+    return await db.delete('todos', where: 'id = ?', whereArgs: [id]);
+  }
+
 }
