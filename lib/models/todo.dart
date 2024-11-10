@@ -20,7 +20,7 @@ class Todo{
         id: map['id'],
         title: map['title'],
         description: map['description'],
-        isDone: map['isDone']);
+        isDone: map['isDone'] == 1);
   }
 
 }
